@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Card, Col, Container, Row } from "react-bootstrap";
-
+import { useParams } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
 
@@ -14,7 +14,7 @@ import { getStoredCart } from '../../utlities/cartData';
 const FoodDetails = () => {
 
   
-    
+    let { foodId } = useParams();
     const [foodDetails, setFoodDetails] = useState([]);
     const [singleFoods, setSingleFoods] = useState({});
     useEffect(() =>{
