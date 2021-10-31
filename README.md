@@ -2,7 +2,7 @@
 
 # Description: Bangla Foodie is a online food deliver service portal. A person can order their desired food from home or any place through mobile or computer. 
 
-# Live site link: 
+# Live site link: https://food-delivery-authentication.web.app
 
 # From this website you will know the following things
 
