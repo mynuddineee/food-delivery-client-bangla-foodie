@@ -6,7 +6,7 @@ const ManageOrders = () => {
 
     useEffect( () =>{
 
-        fetch('http://localhost:5000/orders.order')
+        fetch('https://guarded-plateau-24650.herokuapp.com/orders')
         .then(res => res.json())
         .then(data => setFoods(data))
 
@@ -37,7 +37,7 @@ const ManageOrders = () => {
     }
     return (
         <div>
-            <h2>Manage Orders</h2>
+            <h2>Manage All Orders</h2>
             {
                 foods.map(food => <div key={food._id}>
 

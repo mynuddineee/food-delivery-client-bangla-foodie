@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+
 
 import './MyOrders.css';
 
@@ -21,7 +21,7 @@ const MyOrders = () => {
 
     const handleDelete = id =>{
 
-        const url = `https://guarded-plateau-24650.herokuapp.com/foods/${id}`;
+        const url = `https://guarded-plateau-24650.herokuapp.com/${id}`;
         fetch(url, {
 
             method: 'DELETE'
