@@ -43,7 +43,7 @@ const FoodDetails = () => {
 
         const savedCart = getStoredCart();
        data.order = savedCart;
-       axios.post('http://localhost:5000/orders', data)
+       axios.post('https://guarded-plateau-24650.herokuapp.com/orders', data)
         .then(res => {
 
             if(res.data.insertedId){

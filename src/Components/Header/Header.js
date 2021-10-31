@@ -25,6 +25,12 @@ const Header = () => {
         history.push('/addFood');
     
 }
+const manageOrder = () => {
+
+        
+    history.push('/manageOrders');
+
+}
     return (
         
                 <>
@@ -54,7 +60,7 @@ const Header = () => {
                             }
                              {
                                 user.email?
-                                <button type="" className="btn btn-primary button-link ">Manage All Orders</button>
+                                <button onClick={manageOrder} type="" className="btn btn-primary button-link ">Manage All Orders</button>
                                 
                                 :
                                 <Nav></Nav>

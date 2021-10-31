@@ -1,47 +1,73 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 
-import { useParams } from 'react-router-dom';
+import './MyOrders.css';
 
 
 const MyOrders = () => {
-    let { orderId } = useParams();
-    const [orderDetails, setOrderDetails] = useState({});
-  
-    useEffect(() =>{
+    
+    const [foodies, setFoodies] =useState([]);
+    
 
-        fetch(`https://guarded-plateau-24650.herokuapp.com/foods/${orderId}`)
-        
-        .then((res) => res.json())
-        .then((data) => setOrderDetails(data));
-       
+    useEffect( () =>{
 
-    },[]);
+        fetch('http://localhost:5000/foods')
+        .then(res => res.json())
+        .then(data => setFoodies(data))
+
+    }, []);
+
+    
+
+    const handleDelete = id =>{
+
+        const url = `https://guarded-plateau-24650.herokuapp.com/foods/${id}`;
+        fetch(url, {
+
+            method: 'DELETE'
+        })
+
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.deletedCount){
+                alert('Deleted');
+                const remaining = foodies.filter(food => food._id !== id);
+                console.log(remaining);
+                foodies(remaining);
+            
+            }
+            
+        })
+
+    }
+
+
 
     
 
     return (
         <div className="product">
-            <div>
-            <div className="container-fluid">
-                <div className="row g-4">
-                        <div className="col my-4">
-                            <div className="card">
-                            <img src={orderDetails?.img} className="card-img-top" alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title">Food Name: {orderDetails?.name}</h5>
-                                <h6 className="card-text">Price: {orderDetails?.price}</h6>
-                                <h6 className="card-text">Quantity: {orderDetails?.quantity}</h6>
-                                <h6 className="card-text">Restaurant Name: {orderDetails?.restaurant}</h6>
-                                
-                                <br/>
-                               
-                                <button className="btn-regular">Remove</button>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </div>
+            
+            
+                <div>
+
+                <h2>Manage Orders</h2>
+            {
+                foodies.map(food => <div key={food._id}>
+
+                    <img className="order-img" src={food.img} alt=""/>
+                    <h3>{food.name}</h3>
+                    <h3>Price: {food.price} </h3>
+                    <button onClick= { () => handleDelete(food._id)}>Delete</button><br/><br/>
+
+
+                </div>)
+            }
+
+
+                </div>
+            
         </div>
     );
 };

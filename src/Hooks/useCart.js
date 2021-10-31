@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getStoredCart } from '../utilities/cartData';
+import { getStoredCart } from '../../utlities/cartData';
 
 const useCart = () => {
     const [cart, setCart] = useState([]);

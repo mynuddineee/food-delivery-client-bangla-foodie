@@ -14,6 +14,7 @@ import Food from './Components/Food/Food';
 import FoodDetails from './Components/FoodDetails/FoodDetails';
 import MyOrders from './Components/MyOrders/MyOrders';
 import AddFood from './Components/AddFood/AddFood';
+import ManageOrders from './Components/ManageOrders/ManageOrders';
 
 function App() {
   return (
@@ -47,9 +48,13 @@ function App() {
                   <Route path = "/myOrders">
                     <MyOrders></MyOrders>
                   </Route>
+                  <Route path = "/manageOrders">
+                    <ManageOrders></ManageOrders>
+                  </Route>
                   <Route path = "/addFood">
                     <AddFood></AddFood>
                   </Route>
+                  
                   <Route path = "*">
                     <PageNotFound></PageNotFound>
                   </Route>
