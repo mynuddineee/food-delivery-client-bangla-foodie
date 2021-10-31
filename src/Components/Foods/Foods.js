@@ -9,7 +9,7 @@ const Foods = () => {
 
     useEffect( () => {
 
-        fetch('http://localhost:5000/foods')
+        fetch('https://guarded-plateau-24650.herokuapp.com/foods')
         .then(res => res.json())
         .then(data => setFoodies(data));
     },[])
