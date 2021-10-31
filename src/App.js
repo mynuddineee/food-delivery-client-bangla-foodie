@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Components/Header/Header';
@@ -12,6 +12,8 @@ import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Food from './Components/Food/Food';
 import FoodDetails from './Components/FoodDetails/FoodDetails';
+import MyOrders from './Components/MyOrders/MyOrders';
+import AddFood from './Components/AddFood/AddFood';
 
 function App() {
   return (
@@ -35,7 +37,6 @@ function App() {
                   <PrivateRoute path = "/foods">
                     <Foods></Foods>
                   </PrivateRoute>
-                    
                   
                   <Route exact path = "/food">
                     <Food></Food>
@@ -43,6 +44,12 @@ function App() {
                   <PrivateRoute path = "/foodDetails/:foodId">
                     <FoodDetails></FoodDetails>
                   </PrivateRoute>
+                  <Route path = "/myOrders">
+                    <MyOrders></MyOrders>
+                  </Route>
+                  <Route path = "/addFood">
+                    <AddFood></AddFood>
+                  </Route>
                   <Route path = "*">
                     <PageNotFound></PageNotFound>
                   </Route>

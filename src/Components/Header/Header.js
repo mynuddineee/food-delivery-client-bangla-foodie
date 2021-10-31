@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../Hooks/useAuth';
 
@@ -11,6 +12,19 @@ import './Header.css';
 const Header = () => {
 
     const { user, logOut } = useAuth();
+    const history = useHistory();
+    const handleMyOrder = () => {
+
+        
+            history.push('/myOrders');
+        
+    }
+    const handleAddFood = () => {
+
+        
+        history.push('/addFood');
+    
+}
     return (
         
                 <>
@@ -25,14 +39,37 @@ const Header = () => {
                             
                             {
                                 user.email?
-                                <button onClick={logOut} type="">Sign Out</button>
+                                
+                                <button onClick={logOut} className="btn btn-primary button-link"type="">Sign Out</button>
+                                
                                 :
                                 <Nav.Link as={HashLink} to ="/signIn">SignIn</Nav.Link>
+                            }
+                             {
+                                user.email?
+                                <button onClick={handleMyOrder} type="" className="btn btn-primary button-link ">My Orders</button>
+                                
+                                :
+                                <Nav></Nav>
+                            }
+                             {
+                                user.email?
+                                <button type="" className="btn btn-primary button-link ">Manage All Orders</button>
+                                
+                                :
+                                <Nav></Nav>
+                            }
+                             {
+                                user.email?
+                                <button onClick={handleAddFood}  type="" className="btn btn-primary button-link ">Add Food</button>
+                                
+                                :
+                                <Nav></Nav>
                             }
                             <Nav.Link as={HashLink} to="/contactUs">Contact Us</Nav.Link>
 
                             { user.email &&
-                                <span style={{color: 'white'}}>Hello: {user.displayName} email:{user.email}</span>
+                                <span style={{color: 'white', textAlign: 'left', paddingLeft:'120px'}}>Hello: {user.displayName} <br/> email: {user.email}</span>
                             }
                             
                             </Nav>

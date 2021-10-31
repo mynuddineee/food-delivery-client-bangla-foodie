@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Food = ({food}) => {
 
-    const{name, img, price, _id} = food;
+    const{name, img, price, _id,restaurant} = food;
 
     return (
         <div>
@@ -15,6 +15,7 @@ const Food = ({food}) => {
                             <div className="card-body">
                                 <h5 className="card-title">Food Name: {name}</h5>
                                 <h6 className="card-text">Price: {price}</h6>
+                                <h6 className="card-text">Restaurant Name: {restaurant}</h6>
                                 
                                 <br/>
                                 <NavLink to={`/foodDetails/${_id}`}
