@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 const ManageOrders = () => {
 
-    const [foods, setFoods] =useState([]);
+    const [orders, setOrders] =useState([]);
 
     useEffect( () =>{
 
         fetch('https://guarded-plateau-24650.herokuapp.com/orders')
         .then(res => res.json())
-        .then(data => setFoods(data))
+        .then(data => setOrders(data))
 
     }, [])
 
@@ -25,8 +25,8 @@ const ManageOrders = () => {
             console.log(data)
             if(data.deletedCount){
                 alert('Deleted');
-                const remaining = foods.filter(food => food._id !== id);
-            setFoods(remaining);
+                const remaining = orders.filter(order => order._id !== id);
+            setOrders(remaining);
             
             }
             
@@ -39,13 +39,14 @@ const ManageOrders = () => {
         <div>
             <h2>Manage All Orders</h2>
             {
-                foods.map(food => <div key={food._id}>
+                orders?.map(order => (<div key={order._id}>
 
-                    <h3>{food.name}</h3>
-                    <button onClick= { () => handleDelete(food._id)}>Delete</button>
+                    <h3>{order.name}</h3>
+                    <h3>{order.email}</h3>
+                    <button onClick= { () => handleDelete(order._id)}>Delete</button>
 
 
-                </div>)
+                </div>))
             }
         </div>
     );
