@@ -11,7 +11,7 @@ const MyOrders = () => {
 
     useEffect( () =>{
 
-        fetch('http://localhost:5000/foods')
+        fetch('https://guarded-plateau-24650.herokuapp.com/foods')
         .then(res => res.json())
         .then(data => setFoodies(data))
 
@@ -21,7 +21,7 @@ const MyOrders = () => {
 
     const handleDelete = id =>{
 
-        const url = `http://localhost:5000/foods/${id}`;
+        const url = `https://guarded-plateau-24650.herokuapp.com/foods/${id}`;
         fetch(url, {
 
             method: 'DELETE'
